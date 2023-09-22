@@ -2,6 +2,8 @@
 {
     private static void Main(string[] args)
     {
+
+        //Варіант 1
         Console.OutputEncoding = System.Text.Encoding.Unicode;
 
 
