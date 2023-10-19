@@ -1,30 +1,45 @@
-﻿internal class Program
+﻿using System;
+using System.IO;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
         Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-
         string inputFileName = "input.txt";
         string outputFileName = "output.txt";
 
-        int maxDots = Convert.ToInt32(File.ReadAllText(inputFileName));
-        int diamontsAmount = 0;
-        Console.WriteLine("Максимальна кількість крапок на дощечці: "+maxDots);
-
-
-       //Console.WriteLine("Пари на дощечках:");
-        for (int i = maxDots; i >= 0; i--)
+        if (File.Exists(inputFileName))
         {
-            for (int j = i; j >= 0; j--)
+            string inputContents = File.ReadAllText(inputFileName);
+
+            if (int.TryParse(inputContents, out int maxDots))
             {
-                //Console.WriteLine(i + "  " + j);
-                diamontsAmount += i + j;
+                int diamontsAmount = 0;
+                Console.WriteLine("Максимальна кількість крапок на дощечці: " + maxDots);
+
+                for (int i = maxDots; i >= 0; i--)
+                {
+                    for (int j = i; j >= 0; j--)
+                    {
+                        diamontsAmount += i + j;
+                    }
+                }
+                Console.WriteLine("Необхідно діамантів: " + diamontsAmount);
+
+                File.WriteAllText(outputFileName, diamontsAmount.ToString());
+            }
+            else
+            {
+                Console.WriteLine("Некоректний формат вмісту файлу input.txt. Вміст повинен бути цілим числом.");
             }
         }
-        Console.WriteLine("Необхідно діамантів: "+diamontsAmount);
+        else
+        {
+            Console.WriteLine("Файл input.txt не знайдено.");
+        }
 
-        File.WriteAllText(outputFileName, diamontsAmount.ToString());
         Console.ReadKey();
     }
 }
