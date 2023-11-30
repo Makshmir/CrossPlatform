@@ -22,11 +22,11 @@
 </p>
 @using (Html.BeginForm("DoLab1", "Labs", FormMethod.Post)) { 
 
-<div class="I\O-form">
-    <input class="input1" type="number" name="input1">
+    <div class="I/O_form">
+        <input class="form-control" type="number" name="input1">
    <a href="/Labs/DoLab1">
-        <button>розрахувати</button>
+            <button class="btn btn-success">розрахувати</button>
     </a>
-        <input class="output1" type="number" readonly value="@TempData["result"]">
+        <input class="form-control" type="number" readonly value="@TempData["result"]">
 </div>
 }
