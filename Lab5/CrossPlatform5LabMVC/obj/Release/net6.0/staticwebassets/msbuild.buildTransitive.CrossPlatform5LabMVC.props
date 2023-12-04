@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\CrossPlatform5LabMVC.props" />
-</Project>
